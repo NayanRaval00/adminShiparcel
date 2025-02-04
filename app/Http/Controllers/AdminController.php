@@ -21,7 +21,7 @@ class AdminController extends Controller
         ]);
 
         if (Auth::guard('admin')->attempt($credentials)) {
-            return redirect()->route('dashboard');
+            return redirect()->route('admin.dashboard');
         }
 
         return back()->withErrors(['email' => 'Invalid login credentials.']);
@@ -29,7 +29,7 @@ class AdminController extends Controller
 
     public function logout(Request $request)
     {
-        Auth::logout();
-        return redirect()->route('custom.login');
+        Auth::guard('admin')->logout();
+        return redirect()->route('admin.login');
     }
 }

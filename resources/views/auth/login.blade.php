@@ -48,7 +48,7 @@
     <section class="auth bg-base d-flex flex-wrap">
         <div class="auth-left d-lg-block d-none">
             <div class="d-flex align-items-center flex-column h-100 justify-content-center">
-                <img src="assets/images/auth/auth-img.png" alt="">
+                <img src="{{asset('assets/images/auth/auth-img.png')}}" alt="image">
             </div>
         </div>
         <div class="auth-right py-32 px-24 d-flex flex-column justify-content-center">
@@ -60,7 +60,7 @@
                     <h4 class="mb-12">Sign In to your Account</h4>
                     <p class="mb-32 text-secondary-light text-lg">Welcome back! please enter your detail</p>
                 </div>
-                <form method="POST" action="{{ route('custom.login.submit') }}">
+                <form method="POST" action="{{ route('custom.login') }}">
                     @csrf
 
                     <div class="icon-field mb-16">

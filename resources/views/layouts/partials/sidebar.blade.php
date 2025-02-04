@@ -12,10 +12,23 @@
     <div class="sidebar-menu-area">
         <ul class="sidebar-menu" id="sidebar-menu">
             <li class="">
-                <a href="{{route('dashboard')}}">
+                <a href="{{route('admin.dashboard')}}">
                     <iconify-icon icon="solar:home-smile-angle-outline" class="menu-icon"></iconify-icon>
                     <span>Dashboard</span>
                 </a>
+            </li>
+            <li class="sidebar-menu-group-title">Application</li>
+            <li class="dropdown">
+                <a href="javascript:void(0)">
+                    <iconify-icon icon="hugeicons:invoice-03" class="menu-icon"></iconify-icon>
+                    <span>Application</span>
+                </a>
+                <ul class="sidebar-submenu">
+                    <li>
+                        <a href="{{route('users.index')}}"><i class="fa fa-users"></i>Users List</a>
+                    </li>
+                   
+                </ul>
             </li>
         </ul>
     </div>
