@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WalletController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -19,5 +20,9 @@ Route::prefix('admin')->group(function () {
 
         /** User Management */
         Route::resource('users', UserController::class);
+        Route::resource('wallets', WalletController::class);
+
+
+        Route::patch('/wallets/{wallet}/update-status', [WalletController::class, 'updateStatus'])->name('wallets.updateStatus');
     });
 });

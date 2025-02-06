@@ -23,12 +23,22 @@
                     <iconify-icon icon="hugeicons:invoice-03" class="menu-icon"></iconify-icon>
                     <span>Application</span>
                 </a>
+
                 <ul class="sidebar-submenu">
                     <li>
                         <a href="{{route('users.index')}}"><i class="fa fa-users"></i>Users List</a>
                     </li>
-                   
+                    <li class="mt-4">
+                        <a href="{{route('wallets.index')}}"><i class="fa fa-wallet"></i>Wallet Requests</a>
+                    </li>
+
                 </ul>
+                <!-- <ul class="sidebar-submenu">
+                    <li>
+                        <a href="{{route('users.index')}}"><i class="fa fa-wallet"></i>Wallet Requests</a>
+                    </li>
+
+                </ul> -->
             </li>
         </ul>
     </div>

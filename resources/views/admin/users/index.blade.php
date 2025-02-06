@@ -19,6 +19,7 @@
                             <th>Sno</th>
                             <th>Name</th>
                             <th>Email</th>
+                            <th>Profile Image</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
@@ -32,6 +33,12 @@
                             </td>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
+                            <td>
+                                @if($user->image_url!=null)
+                                <img src="{{storage_path().'/app/public/'.$user->image_url}}" alt="user_image">
+                                
+                                @endif
+                            </td>
                             <td>{{ $user->status }}</td>
                             <td class="">
                                 <a href="javascript:void(0)" class="w-32-px h-32-px bg-primary-light text-primary-600 rounded-circle d-inline-flex align-items-center justify-content-center">
