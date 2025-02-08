@@ -36,7 +36,7 @@ class UserController extends Controller
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => Hash::make($request->password), 
+            'password' => Hash::make($request->password),
             'website_url' => $request->website_url,
             'billing_address' => $request->billing_address,
             'zipcode' => $request->zipcode,
@@ -80,5 +80,31 @@ class UserController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    /**
+     * Show Update User Charge Update form
+     */
+    public function userCharges(Request $request)
+    {
+        $users = User::where('status', 1)->orderBy('id', 'desc')->paginate('10');
+        return view('admin.users.user_charges', compact('users'));
+    }
+
+
+    /**
+     * Update User Chargeable Amount
+     */
+
+    public function updateUserCharges(Request $request, $userId)
+    {
+        $request->validate([
+            'chargeable_amount' => ['required', 'numeric'],
+        ]);
+
+        $user = User::findOrFail($userId);
+        $user->update(['chargeable_amount' => $request->chargeable_amount]);
+
+        return redirect()->back()->with('success', 'Chargeable Amount updated successfully.');
     }
 }

@@ -22,6 +22,9 @@ Route::prefix('admin')->group(function () {
         Route::resource('users', UserController::class);
         Route::resource('wallets', WalletController::class);
 
+        /**User Charges */
+        Route::get('user-charges', [UserController::class, 'userCharges'])->name('user-charges');
+        Route::patch('users/{user}/update-user-charges', [UserController::class, 'updateUserCharges'])->name('users.update-chargeable-amount');
 
         Route::patch('/wallets/{wallet}/update-status', [WalletController::class, 'updateStatus'])->name('wallets.updateStatus');
     });

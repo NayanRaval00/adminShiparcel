@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('state')->nullable();
             $table->string('image_url')->nullable();
             $table->integer('status')->default(1);
+            $table->integer('chargeable_amount')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

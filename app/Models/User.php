@@ -28,7 +28,8 @@ class User extends Authenticatable
         'state',
         'image_url',
         'status',
-        'user_charge'
+        'chargeable_amount'
+
     ];
 
     /**

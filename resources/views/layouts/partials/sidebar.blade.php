@@ -40,6 +40,18 @@
 
                 </ul> -->
             </li>
+
+            <li class="dropdown">
+          <a href="javascript:void(0)">
+            <iconify-icon icon="icon-park-outline:setting-two" class="menu-icon"></iconify-icon>
+            <span>Settings</span>
+          </a>
+          <ul class="sidebar-submenu">
+            <li>
+              <a href="{{route('user-charges')}}"><i class="fa fa-user"></i> User Charges</a>
+            </li>
+          </ul>
+        </li>
         </ul>
     </div>
 </aside>

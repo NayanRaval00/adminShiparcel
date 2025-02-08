@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateUserRequest;
 use App\Models\User;
+use App\Models\Wallet;
 use App\Models\WalletTransaction;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class WalletController extends Controller
@@ -16,7 +18,6 @@ class WalletController extends Controller
     public function index()
     {
         $data['wallets'] = WalletTransaction::with('user')->orderBy('id', 'desc')->paginate(10);
-        // dd($data['wallets']);
         return view('admin.wallets.index', $data);
     }
 
@@ -91,6 +92,23 @@ class WalletController extends Controller
         ]);
 
         $wallet->update(['status' => $request->status]);
+        if ($request->status == '101') {
+            $walletData = Wallet::where('user_id', Auth::id())->first();
+            if ($wallet) {
+                $walletData->update(
+                    [
+                        'amount' => $walletData->amount + $wallet->amount
+                    ]
+                );
+            } else {
+                Wallet::create([
+                    'amount' => $wallet->amount,
+                    'user_id' => Auth::id(),
+                    'status' => 1,
+                    'promo_code' => null
+                ]);
+            }
+        }
 
         return redirect()->back()->with('success', 'Transaction status updated successfully.');
     }
