@@ -90,11 +90,9 @@ class WalletController extends Controller
         $request->validate([
             'status' => 'required|in:101,102,103,104,105',
         ]);
-
-        $wallet->update(['status' => $request->status]);
         if ($request->status == '101') {
             $walletData = Wallet::where('user_id', Auth::id())->first();
-            if ($wallet) {
+            if ($wallet && $walletData) {
                 $walletData->update(
                     [
                         'amount' => $walletData->amount + $wallet->amount
@@ -109,7 +107,7 @@ class WalletController extends Controller
                 ]);
             }
         }
-
+        $wallet->update(['status' => $request->status]);
         return redirect()->back()->with('success', 'Transaction status updated successfully.');
     }
 }

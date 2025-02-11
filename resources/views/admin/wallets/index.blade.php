@@ -40,10 +40,12 @@
 
                             <td>{{ $user->created_at }}</td>
                             <td>
+                                @if($user->status!=101)
                                 <a href="javascript:void(0)" onclick="openStatusModal({{ $user->id }}, {{ $user->status }})"
                                     class="w-32-px h-32-px bg-success-focus text-success-main rounded-circle d-inline-flex align-items-center justify-content-center">
                                     <iconify-icon icon="lucide:edit"></iconify-icon>
                                 </a>
+                                @endif
                             </td>
                             <!-- Modal -->
                             <div class="modal fade" id="statusModal" tabindex="-1" aria-labelledby="statusModalLabel" aria-hidden="true">
