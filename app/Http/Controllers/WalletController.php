@@ -95,13 +95,14 @@ class WalletController extends Controller
             if ($wallet && $walletData) {
                 $walletData->update(
                     [
-                        'amount' => $walletData->amount + $wallet->amount
+                        'amount' => $walletData->amount + $wallet->amount,
+                        'user_id' => $wallet->user_id,
                     ]
                 );
             } else {
                 Wallet::create([
                     'amount' => $wallet->amount,
-                    'user_id' => Auth::id(),
+                    'user_id' => $wallet->user_id,
                     'status' => 1,
                     'promo_code' => null
                 ]);
