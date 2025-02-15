@@ -11,6 +11,15 @@
         </div>
 
         <div class="card-body">
+            @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+            @endif
+
+            @if (session('error'))
+            <div class="alert alert-danger">{{ session('error') }}</div>
+            @endif
 
             <div class="table-responsive">
                 <table class="table basic-border-table mb-0">
@@ -35,18 +44,20 @@
                             <td>{{ $user->email }}</td>
                             <td>
                                 @if($user->image_url!=null)
-                                <img src="{{storage_path().'/app/public/'.$user->image_url}}" alt="user_image">
-                                
+                                <img src="{{ asset('storage/' . $user->image_url) }}" height="50px" width="50px" alt="user_image">
+
                                 @endif
                             </td>
-                            <td>{{ $user->status }}</td>
+                            <td>@if($user->status ==1)<span class="text-success">{{'Active'}}</span>@else<span class="text-danger">{{'InActive'}}</span>@endif</td>
                             <td class="">
                                 <a href="javascript:void(0)" class="w-32-px h-32-px bg-primary-light text-primary-600 rounded-circle d-inline-flex align-items-center justify-content-center">
                                     <iconify-icon icon="iconamoon:eye-light"></iconify-icon>
                                 </a>
-                                <a href="javascript:void(0)" class="w-32-px h-32-px bg-success-focus text-success-main rounded-circle d-inline-flex align-items-center justify-content-center">
+                                <a href="{{ route('users.edit', $user->id) }}"
+                                    class="w-32-px h-32-px bg-success-focus text-success-main rounded-circle d-inline-flex align-items-center justify-content-center">
                                     <iconify-icon icon="lucide:edit"></iconify-icon>
                                 </a>
+
                                 <a href="javascript:void(0)" class="w-32-px h-32-px bg-danger-focus text-danger-main rounded-circle d-inline-flex align-items-center justify-content-center">
                                     <iconify-icon icon="mingcute:delete-2-line"></iconify-icon>
                                 </a>

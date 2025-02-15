@@ -20,6 +20,7 @@
                     <thead>
                         <tr>
                             <th>Sno</th>
+                            <th>User Id</th>
                             <th>User Name</th>
                             <th>Amount</th>
                             <th>Status</th>
@@ -34,6 +35,7 @@
                             <td>
                                 <a href="javascript:void(0)" class="text-primary-600">#{{ $i }}</a>
                             </td>
+                            <td>{{ $user->user->id }}</td>
                             <td>{{ $user->user->name }}</td>
                             <td>{{ $user->amount }}</td>
                             <td>{{ $user->status_label }}</td>

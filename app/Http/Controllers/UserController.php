@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateUserRequest;
+use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -44,6 +45,8 @@ class UserController extends Controller
             'state' => $request->state,
             'image_url' => $request->file('image_url') ? $request->file('image_url')->store('users', 'public') : null,
             'status' => $request->status,
+            'cod_charges' => $request->cod_charges,
+            'cod_percentage' => $request->cod_percentage,
         ]);
 
         return redirect()->route('users.index')->with('success', 'User created successfully!');
@@ -53,26 +56,49 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-        //
-    }
+    public function show(string $id) {}
 
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
     {
-        //
+        $user = User::findOrFail($id); // Retrieve user or fail if not found
+        return view('admin.users.edit', compact('user')); // Pass user data to the edit view
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateUserRequest $request, User $user)
     {
-        //
+        // Update user details
+        $user->update([
+            'name' => $request->name,
+            'website_url' => $request->website_url,
+            'billing_address' => $request->billing_address,
+            'zipcode' => $request->zipcode,
+            'city' => $request->city,
+            'state' => $request->state,
+            'status' => $request->status,
+            'cod_charges' => $request->cod_charges,
+            'cod_percentage' => $request->cod_percentage,
+        ]);
+
+        // If a new password is provided, update it
+        if ($request->filled('password')) {
+            $user->update(['password' => Hash::make($request->password)]);
+        }
+
+        // Handle profile image upload
+        if ($request->hasFile('image_url')) {
+            $imagePath = $request->file('image_url')->store('users', 'public');
+            $user->update(['image_url' => $imagePath]);
+        }
+
+        return redirect()->route('users.index')->with('success', 'User updated successfully!');
     }
+
 
     /**
      * Remove the specified resource from storage.

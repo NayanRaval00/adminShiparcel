@@ -71,6 +71,18 @@
                         </div>
 
                         <div class="form-group">
+                            <label class="form-label">COD Charges</label>
+                            <input type="number" class="form-control" id="cod_charges" name="cod_charges" />
+                            <small class="text-danger" id="cod_charges_error"></small>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">COD Percentage</label>
+                            <input type="number" class="form-control" id="cod_percentage" name="cod_percentage" />
+                            <small class="text-danger" id="cod_percentage_error"></small>
+                        </div>
+
+                        <div class="form-group">
                             <label class="form-label">Status</label>
                             <select class="form-control" id="status" name="status">
                                 <option value="1">Active</option>
@@ -136,10 +148,30 @@
             document.getElementById("password_error").textContent = "";
         }
 
+
+        // cod_charges validation
+        const codCharges = document.getElementById("cod_charges").value.trim();
+        if (codCharges === "") {
+            document.getElementById("cod_charges_error").textContent = "cod_charges is required.";
+            isValid = false;
+        } else {
+            document.getElementById("cod_charges_error").textContent = "";
+        }
+
+
+
+        // cod_percentage validation
+        const codPercentage = document.getElementById("cod_percentage").value.trim();
+        if (codPercentage === "") {
+            document.getElementById("cod_percentage_error").textContent = "cod_percentage is required.";
+            isValid = false;
+        } else {
+            document.getElementById("cod_percentage_error").textContent = "";
+        }
+
         if (!isValid) {
             event.preventDefault();
         }
     });
 </script>
 @endsection
-
