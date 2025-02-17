@@ -7,38 +7,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>@yield('title', 'Admin Panel')</title>
     <!-- Fonts and Global Styles -->
-    <link rel="shortcut icon" href="{{asset('assets/media/logos/shiparcel_logo.png')}}" />
+    <link rel="shortcut icon" href="{{ asset('assets/media/logos/shiparcel_logo.png') }}" />
 
-    <link rel="stylesheet" href="{{ asset('assets/css/remixicon.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/remixicon.css') }}">
     <!-- BootStrap css -->
-    <link rel="stylesheet" href="{{ asset('assets/css/lib/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/lib/bootstrap.min.css') }}">
     <!-- Apex Chart css -->
-    <link rel="stylesheet" href="{{ asset('assets/css/lib/apexcharts.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/lib/apexcharts.css') }}">
     <!-- Data Table css -->
-    <link rel="stylesheet" href="{{ asset('assets/css/lib/dataTables.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/lib/dataTables.min.css') }}">
     <!-- Text Editor css -->
-    <link rel="stylesheet" href="{{ asset('assets/css/lib/editor-katex.min.css')}}">
-    <link rel="stylesheet" href="{{ asset('assets/css/lib/editor.atom-one-dark.min.css')}}">
-    <link rel="stylesheet" href="{{ asset('assets/css/lib/editor.quill.snow.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/lib/editor-katex.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/lib/editor.atom-one-dark.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/lib/editor.quill.snow.css') }}">
     <!-- Date picker css -->
-    <link rel="stylesheet" href="{{ asset('assets/css/lib/flatpickr.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/lib/flatpickr.min.css') }}">
     <!-- Calendar css -->
-    <link rel="stylesheet" href="{{ asset('assets/css/lib/full-calendar.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/lib/full-calendar.css') }}">
     <!-- Vector Map css -->
-    <link rel="stylesheet" href="{{ asset('assets/css/lib/jquery-jvectormap-2.0.5.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/lib/jquery-jvectormap-2.0.5.css') }}">
     <!-- Popup css -->
-    <link rel="stylesheet" href="{{ asset('assets/css/lib/magnific-popup.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/lib/magnific-popup.css') }}">
     <!-- Slick Slider css -->
-    <link rel="stylesheet" href="{{ asset('assets/css/lib/slick.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/lib/slick.css') }}">
     <!-- prism css -->
-    <link rel="stylesheet" href="{{ asset('assets/css/lib/prism.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/lib/prism.css') }}">
     <!-- file upload css -->
-    <link rel="stylesheet" href="{{ asset('assets/css/lib/file-upload.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/lib/file-upload.css') }}">
 
-    <link rel="stylesheet" href="{{ asset('assets/css/lib/audioplayer.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/lib/audioplayer.css') }}">
     <!-- main css -->
-    <link rel="stylesheet" href="{{ asset('assets/css/style.css')}}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Styles -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" />
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
+    <!-- Or for RTL support -->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.rtl.min.css" />
+
     @stack('styles')
 </head>
 
@@ -90,6 +100,10 @@
     <script src="{{ asset('assets/js/app.js') }}"></script>
 
     <script src="{{ asset('assets/js/homeOneChart.js') }}"></script>
+        <!-- Scripts -->
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.0/dist/jquery.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
     @stack('scripts')
 </body>

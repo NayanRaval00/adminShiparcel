@@ -133,4 +133,13 @@ class UserController extends Controller
 
         return redirect()->back()->with('success', 'Chargeable Amount updated successfully.');
     }
+
+    public function user_weight_slab(Request $request)
+    {
+        return view('admin.users.courier_weight_slab');
+    }
+    public function courier_rate_slab(Request $request)
+    {
+        return view('admin.users.courier_rate_slab');
+    }
 }
