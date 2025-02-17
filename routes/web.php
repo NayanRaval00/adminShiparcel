@@ -25,7 +25,8 @@ Route::prefix('admin')->group(function () {
         /**User Charges */
         Route::get('user-charges', [UserController::class, 'userCharges'])->name('user-charges');
         Route::patch('users/{user}/update-user-charges', [UserController::class, 'updateUserCharges'])->name('users.update-chargeable-amount');
-
+        Route::get('user-weight-slab', [UserController::class, 'user_weight_slab'])->name('user-weight-slab');
+        Route::get('courier-rate-slab', [UserController::class, 'courier_rate_slab'])->name('courier-rate-slab');
         Route::patch('/wallets/{wallet}/update-status', [WalletController::class, 'updateStatus'])->name('wallets.updateStatus');
     });
 });
