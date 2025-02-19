@@ -61,6 +61,10 @@
                                 <a href="javascript:void(0)" class="w-32-px h-32-px bg-danger-focus text-danger-main rounded-circle d-inline-flex align-items-center justify-content-center">
                                     <iconify-icon icon="mingcute:delete-2-line"></iconify-icon>
                                 </a>
+
+                                <a title="Courier Rates" href="{{route('user-weight-slab',$user->id)}}" class="w-32-px h-32-px bg-danger-focus text-danger-main rounded-circle d-inline-flex align-items-center justify-content-center">
+                                    <iconify-icon icon="ic:round-settings" width="20" height="20"></iconify-icon>
+                                </a>
                             </td>
                         </tr>
                         @php $i++; @endphp
