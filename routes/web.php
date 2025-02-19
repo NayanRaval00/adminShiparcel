@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CourierRateController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WalletController;
@@ -27,10 +28,10 @@ Route::prefix('admin')->group(function () {
         Route::patch('users/{user}/update-user-charges', [UserController::class, 'updateUserCharges'])->name('users.update-chargeable-amount');
         Route::patch('/wallets/{wallet}/update-status', [WalletController::class, 'updateStatus'])->name('wallets.updateStatus');
         
-        Route::get('user-weight-slab/{user_id}', [UserController::class, 'userWeightSlab'])->name('user-weight-slab');
-        Route::post('/admin/user-weight-slab/save', [UserController::class, 'saveUserWeightSlab'])->name('save-weight-slabs');
-
-        Route::get('courier-rate-slab/{company_id}/{user_id}', [UserController::class, 'courierRateSlab'])->name('courier-rate-slab');
+        Route::get('user-weight-slab/{user_id}', [CourierRateController::class, 'userWeightSlab'])->name('user-weight-slab');
+        Route::post('/admin/user-weight-slab/save', [CourierRateController::class, 'saveUserWeightSlab'])->name('save-weight-slabs');
+        Route::get('courier-rate-slab/{company_id}/{user_id}', [CourierRateController::class, 'courierRateSlab'])->name('courier-rate-slab');
+        Route::post('/save-courier-rates', [CourierRateController::class, 'store'])->name('save.courier.rates');
 
     });
 });

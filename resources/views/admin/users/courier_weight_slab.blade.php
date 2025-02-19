@@ -101,11 +101,9 @@
                     <div class="col-md-3 hidden-section" id="buttons-{{ strtolower($company->name) }}"
                         style="{{ $company->isChecked ? 'display:block' : 'display:none' }}">
                         <button class="btn btn-success btn-sm mr-2" type="submit">Save</button>
-                        <button class="badge text-sm fw-semibold bg-primary-600 px-20 py-9 radius-4 text-white">
-                            <a href="{{ route('courier-rate-slab', ['company_id' => $company->id, 'user_id' => request()->user_id]) }}">
-                                Priority
-                            </a>
-                        </button>
+                        <a class="btn btn-primary btn-sm mr-2" href="{{ route('courier-rate-slab', ['company_id' => $company->id, 'user_id' => request()->user_id]) }}">
+                            Priority
+                        </a>
                     </div>
                 </div>
             </form>
