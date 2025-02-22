@@ -30,8 +30,10 @@ Route::prefix('admin')->group(function () {
         
         Route::get('user-weight-slab/{user_id}', [CourierRateController::class, 'userWeightSlab'])->name('user-weight-slab');
         Route::post('/admin/user-weight-slab/save', [CourierRateController::class, 'saveUserWeightSlab'])->name('save-weight-slabs');
-        Route::get('courier-rate-slab/{company_id}/{user_id}', [CourierRateController::class, 'courierRateSlab'])->name('courier-rate-slab');
-        Route::post('/save-courier-rates', [CourierRateController::class, 'store'])->name('save.courier.rates');
+        Route::get('air-courier-rate-slab/{company_id}/{user_id}', [CourierRateController::class, 'airCourierRateSlab'])->name('air-courier-rate-slab');
+        Route::get('surface-courier-rate-slab/{company_id}/{user_id}', [CourierRateController::class, 'SurfaceCourierRateSlab'])->name('surface-courier-rate-slab');
+        Route::post('/save-air-courier-rates', [CourierRateController::class, 'storeAIRRates'])->name('save.courier.air.rates');
+        Route::post('/save-surface-courier-rates', [CourierRateController::class, 'storeSurfaceRates'])->name('save.surface.rates');
 
     });
 });

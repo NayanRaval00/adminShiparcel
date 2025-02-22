@@ -10,15 +10,10 @@ class UserCourierWeightSlab extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'courier_company_id', 'courier_weight_slab_id', 'is_enabled'];
+    protected $fillable = ['user_id', 'courier_company_id', 'courier_status', 'express_type_air', 'express_type_surface', 'air_weight_slab_ids', 'surface_weight_slab_ids', 'is_enabled'];
 
     public function company(): HasOne
     {
         return $this->hasOne(CourierCompany::class, 'id', 'courier_company_id');
-    }
-
-    public function weightSlabs()
-    {
-        return $this->hasMany(CourierWeightSlab::class, 'id', 'courier_weight_slab_id');
     }
 }

@@ -5,62 +5,59 @@
 @section('content')
 <form id="courierRateForm">
     @csrf
-    <input type="hidden" name="user_id" value="{{ auth()->id() }}">
+    <input type="hidden" name="user_id" value="{{ request()->user_id }}">
     <input type="hidden" name="courier_company_id" value="{{ request()->company_id }}">
     <div class="dashboard-main-body">
         @foreach($formattedSlabs as $index => $slab)
         @php
-        $surfaceTabId = "pills-to-do-list-" . $index;
-        $airTabId = "pills-recent-leads-" . $index;
-        $surfaceTabContentId = "pills-to-do-list-content-" . $index;
-        $airTabContentId = "pills-recent-leads-content-" . $index;
+        $surfaceTabId = "pills-forward-" . $index;
+        $airTabId = "pills-rto-" . $index;
+        $surfaceTabContentId = "pills-forward-content-" . $index;
+        $airTabContentId = "pills-rto-content-" . $index;
         @endphp
 
         <div class="card mb-3">
             <div class="card-header">
+                <h6>AIR</h6>
                 <h5 class="card-title">
                     {{ $slab['company_name'] }} - <span>{{ $slab['weight_slab'].' KG' }}</span>
                 </h5>
             </div>
-            <input type="hidden" name="weight_slab[{{ $index }}]" value="{{$slab['weight_slab']}}">
+            <input type="hidden" name="weight_slab[{{ $index }}]" value="{{ $slab['weight_slab_id'] }}">
 
             <div class="card-body">
                 <ul class="nav nav-pills mb-3" id="pills-tab-{{ $index }}" role="tablist">
                     <li class="nav-item">
                         <button type="button" class="nav-link active" data-bs-toggle="pill"
-                            data-bs-target="#{{ $surfaceTabContentId }}">Surface</button>
+                            data-bs-target="#{{ $surfaceTabContentId }}">Forward</button>
                     </li>
                     <li class="nav-item">
                         <button type="button" class="nav-link" data-bs-toggle="pill"
-                            data-bs-target="#{{ $airTabContentId }}">Air</button>
+                            data-bs-target="#{{ $airTabContentId }}">RTO</button>
                     </li>
                 </ul>
 
                 <div class="tab-content">
-                    @foreach(['Surface', 'Air'] as $mode)
+                    @foreach(['Forward', 'RTO'] as $mode)
                     @php
-                    $tabContentId = ($mode == 'Surface') ? $surfaceTabContentId : $airTabContentId;
+                    $tabContentId = ($mode == 'Forward') ? $surfaceTabContentId : $airTabContentId;
                     @endphp
 
-                    <div class="tab-pane fade {{ $mode == 'Surface' ? 'active show' : '' }}" id="{{ $tabContentId }}">
+                    <div class="tab-pane fade {{ $mode == 'Forward' ? 'active show' : '' }}" id="{{ $tabContentId }}">
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>Zone</th>
+                                    <th>Shiparcel Zone</th>
                                     <th>Forward - (FWD)</th>
                                     <th>Additional - (FWD)</th>
-                                    <th>Forward - (RTO)</th>
-                                    <th>Additional - (RTO)</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach(['A', 'B', 'C', 'D', 'E'] as $zone)
                                 <tr>
                                     <td>{{ $zone }}</td>
-                                    <td><input type="text" class="form-control" name="rates[{{ $index }}][{{ $mode }}][{{ $zone }}][forward_fwd]"></td>
+                                    <td><input type="text" class="form-control" value="" name="rates[{{ $index }}][{{ $mode }}][{{ $zone }}][forward_fwd]"></td>
                                     <td><input type="text" class="form-control" name="rates[{{ $index }}][{{ $mode }}][{{ $zone }}][additional_fwd]"></td>
-                                    <td><input type="text" class="form-control" name="rates[{{ $index }}][{{ $mode }}][{{ $zone }}][forward_rto]"></td>
-                                    <td><input type="text" class="form-control" name="rates[{{ $index }}][{{ $mode }}][{{ $zone }}][additional_rto]"></td>
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -83,12 +80,12 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
     jQuery(document).ready(function($) {
-        $('#courierRateForm').submit('submit', function(e) {
+        $('#courierRateForm').submit(function(e) {
             e.preventDefault();
             let formData = $(this).serialize();
 
             $.ajax({
-                url: "{{ route('save.courier.rates') }}",
+                url: "{{ route('save.courier.air.rates') }}",
                 type: "POST",
                 headers: {
                     'X-CSRF-TOKEN': "{{ csrf_token() }}" // CSRF Token
@@ -106,5 +103,4 @@
         });
     });
 </script>
-
 @endsection
