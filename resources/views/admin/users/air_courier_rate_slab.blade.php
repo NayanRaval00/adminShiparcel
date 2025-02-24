@@ -54,13 +54,32 @@
                             </thead>
                             <tbody>
                                 @foreach(['A', 'B', 'C', 'D', 'E'] as $zone)
+                                @php
+                                // Create the key for lookup
+                                $lookupKey = "{$slab['weight_slab_id']}_{$mode}_{$zone}";
+
+                                // Get existing rate values if they exist
+                                $forwardFwd = $existingRates[$lookupKey]->forward_fwd ?? '';
+                                $additionalFwd = $existingRates[$lookupKey]->additional_fwd ?? '';
+                                @endphp
+
                                 <tr>
                                     <td>{{ $zone }}</td>
-                                    <td><input type="text" class="form-control" value="" name="rates[{{ $index }}][{{ $mode }}][{{ $zone }}][forward_fwd]"></td>
-                                    <td><input type="text" class="form-control" name="rates[{{ $index }}][{{ $mode }}][{{ $zone }}][additional_fwd]"></td>
+                                    <td>
+                                        <input type="text" class="form-control"
+                                            name="rates[{{ $index }}][{{ $mode }}][{{ $zone }}][forward_fwd]"
+                                            value="{{ $forwardFwd }}">
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control"
+                                            name="rates[{{ $index }}][{{ $mode }}][{{ $zone }}][additional_fwd]"
+                                            value="{{ $additionalFwd }}">
+                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>
+
+
                         </table>
                     </div>
                     @endforeach

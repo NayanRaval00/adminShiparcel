@@ -220,7 +220,10 @@ class CourierRateController extends Controller
         // Fetch existing rates for the user and company
         $existingRates = UserAIRCourierRate::where('user_id', $user_id)
             ->where('courier_company_id', $company_id)
-            ->first(); // Assuming one record per user & company
+            ->get()
+            ->keyBy(function ($rate) {
+                return "{$rate->courier_weight_slab_id}_{$rate->mode}_{$rate->zone}";
+            });
 
         $formattedSlabs = [];
 
@@ -255,9 +258,16 @@ class CourierRateController extends Controller
             ->first();
 
         // Fetch existing rates for the user and company
+        // $existingRates = UserSurfaceCourierRate::where('user_id', $user_id)
+        //     ->where('courier_company_id', $company_id)
+        //     ->first(); // Assuming one record per user & company
+
         $existingRates = UserSurfaceCourierRate::where('user_id', $user_id)
             ->where('courier_company_id', $company_id)
-            ->first(); // Assuming one record per user & company
+            ->get()
+            ->keyBy(function ($rate) {
+                return "{$rate->courier_weight_slab_id}_{$rate->mode}_{$rate->zone}";
+            });
 
         $formattedSlabs = [];
 
