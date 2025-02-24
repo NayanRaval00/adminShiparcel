@@ -4,8 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateUserRequest;
 use App\Http\Requests\UpdateUserRequest;
+use App\Models\CourierCompany;
+use App\Models\CourierWeightSlab;
 use App\Models\User;
+use App\Models\UserCourierWeightSlab;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -134,12 +138,4 @@ class UserController extends Controller
         return redirect()->back()->with('success', 'Chargeable Amount updated successfully.');
     }
 
-    public function user_weight_slab(Request $request)
-    {
-        return view('admin.users.courier_weight_slab');
-    }
-    public function courier_rate_slab(Request $request)
-    {
-        return view('admin.users.courier_rate_slab');
-    }
 }

@@ -56,4 +56,16 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+
+    public function courierCompanies()
+    {
+        return $this->belongsToMany(CourierCompany::class, 'user_courier_weight_slabs', 'user_id', 'courier_company_id');
+    }
+
+    // User's selected weight slabs per courier company
+    public function courierWeightSlabs()
+    {
+        return $this->hasMany(UserCourierWeightSlab::class, 'user_id');
+    }
 }
