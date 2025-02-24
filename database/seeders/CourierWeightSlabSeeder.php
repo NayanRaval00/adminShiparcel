@@ -21,6 +21,6 @@ class CourierWeightSlabSeeder extends Seeder
             ['weight' => '5', 'status' => 1, 'created_at' => Carbon::now()],
         ];
 
-        CourierWeightSlab::create($weightSlabs);
+        CourierWeightSlab::insert($weightSlabs);
     }
 }

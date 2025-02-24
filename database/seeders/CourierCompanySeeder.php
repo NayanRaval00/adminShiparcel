@@ -18,6 +18,6 @@ class CourierCompanySeeder extends Seeder
             ['name' => 'Xpressbeez', 'status' => 1, 'created_at' => Carbon::now()],
         ];
 
-        CourierCompany::create($companies);
+        CourierCompany::insert($companies);
     }
 }
