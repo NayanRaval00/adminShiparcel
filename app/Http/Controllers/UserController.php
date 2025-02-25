@@ -17,11 +17,31 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data['users'] = User::orderBy('id', 'desc')->paginate(10);
+        $query = User::query();
+
+        if ($request->has('search') && !empty($request->search)) {
+            $query->where(function ($q) use ($request) {
+                $q->where('name', 'like', '%' . $request->search . '%')
+                    ->orWhere('email', 'like', '%' . $request->search . '%');
+            });
+        }
+
+        if ($request->has('status') && $request->status !== '') {
+            $query->where('status', $request->status);
+        }
+
+        $data['users'] = $query->orderBy('id', 'desc')->paginate(10);
+
+        $data['users']->appends([
+            'search' => $request->search,
+            'status' => $request->status,
+        ]);
+
         return view('admin.users.index', $data);
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -137,5 +157,4 @@ class UserController extends Controller
 
         return redirect()->back()->with('success', 'Chargeable Amount updated successfully.');
     }
-
 }
