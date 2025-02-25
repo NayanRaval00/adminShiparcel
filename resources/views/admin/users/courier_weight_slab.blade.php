@@ -3,6 +3,14 @@
 @section('title', 'User Charges')
 
 @section('content')
+
+@push('styles')
+<!-- Select2 CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.rtl.min.css" />
+@endpush
+
 <div class="dashboard-main-body">
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
@@ -155,11 +163,11 @@
                                     <button type="submit" class="btn btn-primary-600 radius-8 px-14 py-6 text-sm">Save</button>
                                     <a class="btn btn-success-600 radius-8 px-14 py-6 text-sm"
                                         href="{{ route('air-courier-rate-slab', ['company_id' => $company->id, 'user_id' => request()->user_id]) }}">
-                                      AIR  Priority
+                                        AIR Priority
                                     </a>
                                     <a class="btn btn-warning-600 radius-8 px-14 py-6 text-sm"
                                         href="{{ route('surface-courier-rate-slab', ['company_id' => $company->id, 'user_id' => request()->user_id]) }}">
-                                      Surface  Priority
+                                        Surface Priority
                                     </a>
                                 </div>
                             </td>
@@ -173,12 +181,22 @@
     </div>
 </div>
 
+@push('scripts')
+
+<!-- select2 js -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.0/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+@endpush
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <!-- Select2 -->
 <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+
+
+
 
 <script>
     $(document).ready(function() {
