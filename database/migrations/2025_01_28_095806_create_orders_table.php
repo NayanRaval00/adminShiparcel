@@ -47,6 +47,7 @@ return new class extends Migration
             $table->string('pickup_id')->nullable();
             $table->string('courier_name')->nullable();
             $table->integer('user_id')->nullable();
+            $table->integer('status')->nullable();
             $table->timestamps();
         });
 

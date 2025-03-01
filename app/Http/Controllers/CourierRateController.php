@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\CourierCompany;
 use App\Models\CourierWeightSlab;
 use App\Models\UserAIRCourierRate;
-use App\Models\UserCourierRate;
 use App\Models\UserCourierWeightSlab;
 use App\Models\UserSurfaceCourierRate;
 use Illuminate\Http\Request;
@@ -71,7 +70,6 @@ class CourierRateController extends Controller
         return response()->json(['success' => true, 'message' => 'Courier rates saved successfully!']);
     }
 
-
     /**save surface data */
 
     public function storeSurfaceRates(Request $request)
@@ -128,7 +126,6 @@ class CourierRateController extends Controller
 
         return response()->json(['success' => true, 'message' => 'Courier rates saved successfully!']);
     }
-
 
     /**
      * User Weight Slab  
@@ -190,7 +187,7 @@ class CourierRateController extends Controller
             'user_id' => $userId,
             'courier_company_id' => $companyId,
             'courier_status' => $validated['courier_status'] ? true : false,
-            'express_type_air' => $validated['express_type_air'] ? true : false,
+            'express_type_air' => $request->express_type_air ? true : false,
             'express_type_surface' => $request->express_type_surface ? true : false,
             'air_weight_slab_ids' => json_encode($validated['air_weight_slab_ids'] ?? []),
             'surface_weight_slab_ids' => json_encode($validated['surface_weight_slab_ids'] ?? []),
