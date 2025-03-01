@@ -10,11 +10,12 @@ class Warehouse extends Model
     use HasFactory;
     protected $table = 'shiparcel_warehouses';
     protected $fillable = [
-        'address_title',
+       'address_title',
         'sender_name',
         'full_address',
         'phone',
         'pincode',
+        'user_id',
         'pick_address_id'   
     ];
 }
