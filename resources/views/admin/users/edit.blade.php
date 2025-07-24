@@ -91,6 +91,12 @@
                             <small class="text-danger" id="cod_percentage_error"></small>
                         </div>
 
+                        <div class="form-group">
+                            <label class="form-label">Chargeable Amount</label>
+                            <input type="number" class="form-control" id="chargeable_amount" value="{{ $user->chargeable_amount }}" name="chargeable_amount" />
+                            <small class="text-danger" id="chargeable_amount_error"></small>
+                        </div>
+
                         <div class="form-group mt-6">
                             <button type="submit" class="btn btn-primary mr-2">Update</button>
                             <a href="{{ route('users.index') }}" class="btn btn-secondary">Cancel</a>

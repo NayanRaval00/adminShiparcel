@@ -107,6 +107,7 @@ class UserController extends Controller
             'status' => $request->status,
             'cod_charges' => $request->cod_charges,
             'cod_percentage' => $request->cod_percentage,
+            'chargeable_amount' => $request->chargeable_amount
         ]);
 
         // If a new password is provided, update it

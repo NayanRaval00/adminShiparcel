@@ -32,7 +32,8 @@ class UpdateUserRequest extends FormRequest
             'image_url' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
             'status' => ['required'],
             'cod_charges' => ['required', 'integer'],
-            'cod_percentage' => ['required', 'integer']
+            'cod_percentage' => ['required', 'integer'],
+            'chargeable_amount' => ['required', 'integer']
         ];
     }
 }
