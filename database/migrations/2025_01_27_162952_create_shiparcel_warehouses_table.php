@@ -18,6 +18,8 @@ return new class extends Migration
             $table->text('full_address')->nullable();
             $table->string('phone')->nullable();
             $table->string('pincode')->nullable();
+            $table->string('state')->nullable();
+            $table->string('city')->nullable();
             $table->string('pick_address_id')->nullable();
             $table->integer('user_id')->nullable();
             $table->integer('status')->default(1);
