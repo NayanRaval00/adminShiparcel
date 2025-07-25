@@ -83,6 +83,12 @@
                         </div>
 
                         <div class="form-group">
+                            <label class="form-label">Chargeable Amount</label>
+                            <input type="number" class="form-control" id="chargeable_amount" name="chargeable_amount" />
+                            <small class="text-danger" id="chargeable_amount_error"></small>
+                        </div>
+
+                        <div class="form-group">
                             <label class="form-label">Status</label>
                             <select class="form-control" id="status" name="status">
                                 <option value="1">Active</option>
